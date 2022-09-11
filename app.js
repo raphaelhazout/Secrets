@@ -79,9 +79,10 @@ app.post("/register",function(req,res){
     });
 });
 
-app.post("/login", passport.authenticate("local"), function(req, res){
-    res.redirect("/secrets");
-});
+app.post("/login", passport.authenticate("local",{
+    successRedirect: '/secrets',
+    failureRedirect: '/login'
+}));
 
 
 
